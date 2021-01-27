@@ -1,0 +1,45 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 50px 100px;
+  position: relative;
+}
+
+.btn {
+  margin-top: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: rgb(189, 120, 230);
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(245, 240, 196, .6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none;
+}
+
+.overlay--active {
+  position: absolute;
+  display: flex;
+}
+
+.close {
+  display: none;
+}
+
+.close--active {
+  display: block;
+}
