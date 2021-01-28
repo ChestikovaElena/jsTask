@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 50px 0;
+}
+
+.controls {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.count-selector {
+  margin-right: 20px;
+}
+
+.blocks {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
