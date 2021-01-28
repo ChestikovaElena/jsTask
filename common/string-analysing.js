@@ -1,11 +1,10 @@
-const path = "/users/download/index.html";
+const path = "/users/download/index.tml";
 
-function isHtml(path) {
-  if (path.endsWith(".html")) {
-    return true;
-  } else {
-    return false;
-  }
+const isHtml = path => {
+  const requiredExit = '.html';
+  const pathExt = path.slice(-5);
+
+  return pathExt === requiredExit;
 }
 
 console.log(isHtml(path));

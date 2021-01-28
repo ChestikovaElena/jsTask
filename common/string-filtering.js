@@ -1,21 +1,22 @@
 const string = "Привет! Как дела?";
-let resultString = "";
 
-function getVowels(string) {
-  for (let i = 0; i < string.length; i++) {
-    if (isVowel(string[i])) {
-      resultString += string[i];
+const getVowels = stringToFilter => {
+  let resultString = "";
+
+  for (let i = 0; i < stringToFilter.length; i++) {
+    if (isVowel(stringToFilter[i].toLowerCase())) {
+      resultString += stringToFilter[i];
     }
   }
+
   return resultString;
 }
 
-function isVowel(letter) {
+const isVowel = letter => {
   const vowels = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я'];
-  for (let i = 0; i < vowels.length; i++) {
-    if (vowels[i] == letter.toLowerCase()) {
-      return true;
-    }
+  
+  if (vowels.includes(letter)) {
+    return true;
   }
   return false;
 }
