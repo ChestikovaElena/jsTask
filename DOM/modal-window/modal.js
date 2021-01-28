@@ -1,47 +1,33 @@
 const btn = document.querySelector('.btn');
+const body = document.body;
+const successModal = createModal("The message has been sent, thank you!");
 
 btn.addEventListener('click', function(event) {
-  event.preventDefault();
-  const overlay = document.querySelector('.overlay');
-  const wrapper = document.querySelector('.wrapper');
+  body.appendChild(successModal);
+})
 
-  overlay.classList.add('overlay--active');
-  let modalWrapper = document.createElement('div');
-  modalWrapper.style.backgroundColor = "#333";
-  modalWrapper.style.width = "50%";
-  modalWrapper.style.padding = "10px";
-  modalWrapper.style.borderRadius = "5px";
-  modalWrapper.style.position = "relative";
+function createModal(content) {
+  const overlay = document.createElement('div');
+  overlay.classList.add('overlay');
+
+  const modalWrapper = document.createElement('div');
+  modalWrapper.classList.add('modal-wrapper');
+  
+  const modalContent = document.createElement('div');
+  modalContent.classList.add('modal-content');
+  modalContent.innerHTML = content;
+
+  const close = document.createElement('a');
+  close.classList.add('close');
+  close.textContent = 'x';
+  close.href = '#';
+
   overlay.appendChild(modalWrapper);
-
-  let modalContent = document.createElement('div');
-  modalContent.innerHTML = 'Hello, <b>world</b>!';
-  modalContent.style.fontSize = "18px";
-  modalContent.style.color = 'white';
-  modalContent.style.textAlign = 'left';
-  modalWrapper.appendChild(modalContent);
-
-  var close = document.createElement('a');
-  close.innerHTML = 'x';
-  close.style.color = 'white';
-  close.style.backgroundColor = 'red';
-  close.style.width = '20px';
-  close.style.height = '20px';
-  close.style.borderRadius = '50%';
-  close.style.top = '-10px';
-  close.style.right = '-5px';
-  close.style.textAlign = 'center';
-  close.style.cursor = 'pointer';
-  close.style.position = 'absolute';
   modalWrapper.appendChild(close);
-
+  modalWrapper.appendChild(modalContent);
   close.addEventListener('click', function(event) {
     event.preventDefault();
-
-    overlay.classList.remove('overlay--active');
-    modalWrapper.remove();
-    modalContent.remove();
-    close.remove();
+    body.removeChild(overlay);
   })
   
   ///закрытие по кнопке ESC
@@ -49,20 +35,22 @@ btn.addEventListener('click', function(event) {
     var key = e.keyCode;
 
     if (key == 27) {
-      overlay.classList.remove('overlay--active');
-      modalWrapper.remove();
-      modalContent.remove();
-      close.remove();
+      close.click();
     }
   })
 
-  //закрытие при клике вне окна - пока работает не верно, при нажатии на окно тоже закрывается
+  //закрытие при клике вне окна
   overlay.addEventListener('click', function(event) {
-    event.preventDefault();
-    overlay.classList.remove('overlay--active');
-    modalWrapper.remove();
-    modalContent.remove();
-    close.remove();
+    console.log(event.target);
+    if (!event.target.classList.contains('content')) {
+      close.click();
+    }
+
+    // if (event.target == overlay) {
+    //   close.click();
+    // }
   })
-})
+
+  return overlay;
+}
 

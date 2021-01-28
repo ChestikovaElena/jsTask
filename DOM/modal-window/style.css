@@ -27,19 +27,35 @@
   background-color: rgb(245, 240, 196, .6);
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  display: none;
-}
-
-.overlay--active {
+  z-index: 99999;
   position: absolute;
   display: flex;
 }
 
-.close {
-  display: none;
+.modal-wrapper {
+  background-color: #333;
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
 }
 
-.close--active {
+.modal-content {
+  font-size: 18px;
+  color: #fff;
+  text-align: left;
+}
+
+.close {
   display: block;
+  color: #fff;
+  background-color: #fc0303;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: -10px;
+  right: -5px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
 }
